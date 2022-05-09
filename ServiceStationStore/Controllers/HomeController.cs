@@ -5,14 +5,10 @@ namespace ServiceStationStore.Properties
 {
     public class HomeController : Controller
     {
-        private readonly IProductRepository repository;
-        public HomeController(IProductRepository repo)
-        {
-            repository = repo;
-        }
+
         public IActionResult Index()
         {
-            return View(repository.Products);
+            return View();
         }
     }
 }
