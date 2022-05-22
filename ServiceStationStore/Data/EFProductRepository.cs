@@ -1,4 +1,5 @@
-﻿using ServiceStationStore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ServiceStationStore.Models;
 
 namespace ServiceStationStore.Data
 {
@@ -9,6 +10,7 @@ namespace ServiceStationStore.Data
         {
             context = ctx;
         }
-        public IQueryable<Product> Products => context.Products;
+        public IQueryable<Product> Products =>context.Products.Include("Brand").Include("Category");
+
     }
 }

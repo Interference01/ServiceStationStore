@@ -11,5 +11,7 @@ namespace ServiceStationStore.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }
