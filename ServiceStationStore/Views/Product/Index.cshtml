@@ -2,68 +2,32 @@
 
 @foreach (var p in Model.Products)
 {
-     var imageSrc = p.Picture != null? 
-        String.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(p.Picture)) :
-        "~/no_foto.jpeg";
-    <div class="p-3">
-        <div class="rounded-3 border p-1">
-            <div class="bg-light rounded-3">
-                <div class="d-flex">
-                    <div class="d-flex flex-column">
-                        <div class="d-flex justify-content-center mx-5 mt-4">
-                            <img src="@imageSrc" class="img-thumbnail" style="width: 207px; height: 157px;" /> @*Вопрос остается открытым, скорее всего проблема в собачке*@
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p>
-                                <small>
-                                    <img src="~/return.png" style="width:10%" />
-                                    14 дней на обмен и возврат
-                                    <br />
-                                    <img src="~/8703718_yes_check_ok_accept_checklist_icon.png" style="width:10%" />
-                                    Гарантия на запчасти 1 год
-                                </small>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <div class="mb-4">
-                            <h5>
-                                @p.Name
-                            </h5>
-                        </div>
-                        <div>
-                            Бренд: @p.Brand.Name
-                            <br />
-                            Код товара: @p.ProductId
-                        </div>
-                    </div>
-                    <div class="ms-auto p-5">
-                        <div>
-                            <div class="d-flex justify-content-center">
-                                <p>Цена @p.Price$</p>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary">
-                                    <img src="~/cart small.png" style="width: 22px; height: 22px;" />
-                                    Купить
-                                </button>
-                            </div>
-                            <div class="d-flex justify-content-center p-2">
-                                <p>На складе @p.Quantity шт.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @Html.Partial("ProductSummary", p);
 }
 <nav>
     <ul class="pagination d-flex justify-content-center">
-        <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#"><img src="~/arrow right.png" style="width: 20px; height: 20px;" /></a></li>
+        <li class="page-item"><a asp-route-productpage=1 class="page-link">Начало</a></li>
+        @if ((Model.PagingInfo.CurrentPage - 1) >= 1)
+        {
+            <li class="page-item">
+                <a asp-route-productpage="@(Model.PagingInfo.CurrentPage-1)" class="page-link">@(Model.PagingInfo.CurrentPage-1)</a>
+            </li>
+        }
+        <li class="page-item active">
+            <a asp-route-productpage="@Model.PagingInfo.CurrentPage" class="page-link">@Model.PagingInfo.CurrentPage</a>
+        </li>
+        @if (Model.PagingInfo.TotalPages > Model.PagingInfo.CurrentPage)
+        {
+            <li class="page-item">
+                <a asp-route-productpage="@(Model.PagingInfo.CurrentPage+1)" class="page-link">@(Model.PagingInfo.CurrentPage+1)</a>
+            </li>
+        }
+        @if (Model.PagingInfo.TotalPages > (Model.PagingInfo.CurrentPage + 1))
+        {
+            <li class="page-item">
+                <a asp-route-productpage="@(Model.PagingInfo.CurrentPage+2)" class="page-link">@(Model.PagingInfo.CurrentPage+2)</a>
+            </li>
+        }
+        <li class="page-item"><a asp-route-productpage="@Model.PagingInfo.TotalPages" class="page-link"><img src="~/arrow right.png" style="width: 20px; height: 20px;" /></a></li>
     </ul>
 </nav>

@@ -13,22 +13,26 @@ namespace ServiceStationStore.Controllers
         {
             repository = repo;
         }
-        public IActionResult Index(int productPage = 1)
+        public IActionResult Index(string category, int productPage = 1)
         {
+            var products = repository.Products
+                .Where(p => category == "All" || p.Category.Name == category)
+            .OrderBy(p => p.ProductId);
+            
             return View(new ProductListViewModel
             {
-                Products = repository.Products
-            .OrderBy(p => p.ProductId)
-            .Skip((productPage - 1) * PageSize)
+                Products = products.Skip((productPage - 1) * PageSize)
             .Take(PageSize),
-                PagingInfo = new PagingInfo
+            PagingInfo = new PagingInfo
                 {
                     CurrentPage = productPage,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Products.Count()
-                }
+                    TotalItems = products.Count()
+                },
+                CurrentCategory = category
             });
         }
-
     }
+
 }
+

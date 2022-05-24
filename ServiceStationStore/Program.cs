@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using ServiceStationStore.Data;
+using ServiceStationStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnections")));
 builder.Services.AddTransient<IProductRepository, EFProductRepository>();
+builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -18,14 +23,21 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "category",
+    pattern: "Products/{category}/Page{productPage}",
+    defaults: new { Controller = "Product", action = "Index", productPage = 1 });
+
 app.MapControllerRoute(
     name: "pagination",
     pattern: "Products/Page{productPage}",
-    defaults: new { Controller = "Product", action = "Index" });
+    defaults: new { Controller = "Product", action = "Index", productPage = 1 });
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
