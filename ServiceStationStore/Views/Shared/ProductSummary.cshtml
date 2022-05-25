@@ -50,7 +50,7 @@
                             <form id="@Model.ProductId" asp-action="AddToCart" asp-controller="Cart" method="post">
                                 <input type="hidden" asp-for="@Model.ProductId">
                                 <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                                <button type="submit" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary">
                                     <img src="~/cart small.png" style="width: 22px; height: 22px;" />
                                     Купить
                                 </button>
