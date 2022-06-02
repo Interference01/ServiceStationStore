@@ -1,0 +1,84 @@
+REQUEST 
+30.05.2022 13:09:15 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36 Edg/101.0.1210.53 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:10:55 
+StatusCode: 400 
+ContentType: application/json 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:10:55 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: PostmanRuntime/7.29.0 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:10:56 
+StatusCode: 200 
+ContentType: application/json; charset=utf-8 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:13:01 
+URL: /favicon.ico 
+Method: GET 
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36 Edg/101.0.1210.53 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:13:04 
+StatusCode: 404 
+ContentType:  
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:11:17 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: PostmanRuntime/7.29.0 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:13:04 
+StatusCode: 200 
+ContentType: application/json; charset=utf-8 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:15:41 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: PostmanRuntime/7.29.0 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:15:41 
+StatusCode: 200 
+ContentType: application/json; charset=utf-8 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:15:43 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: PostmanRuntime/7.29.0 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:15:43 
+StatusCode: 200 
+ContentType: application/json; charset=utf-8 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------
+REQUEST 
+30.05.2022 14:16:11 
+URL: /Users/authenticate 
+Method: POST 
+User-Agent: PostmanRuntime/7.29.0 
+Body: System.IO.Pipelines.StreamPipeReader 
+RESPONSE 
+30.05.2022 14:16:12 
+StatusCode: 200 
+ContentType: application/json; charset=utf-8 
+Body: System.IO.Pipelines.StreamPipeWriter 
+----------------------------------------

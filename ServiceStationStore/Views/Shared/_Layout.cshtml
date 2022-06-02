@@ -62,6 +62,13 @@
                             <h3>(<u>095) 462 47 57</u></h3>
                         </a>
                     </li>
+                    <li class="p-2 mx-3">
+                        <a>
+                            <p><strong>9:00 - 18:15</strong> - пн-пт</p>
+                            <p><strong>9:00 - 16:00</strong> - сб</p>
+                            <p>Выходной - вс</p>
+                        </a>
+                    </li>
                 </ul>
                 @await Component.InvokeAsync("CartSummary")
             </div>
@@ -103,16 +110,34 @@
                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Поиск</button>
             </form>
         </nav>
-        <div class="row p-4">
-            <div class="col-md-2 p-5">
-                <div id="categories">
-                    @await Component.InvokeAsync("Category")
+        <div class="p-3">
+            <div class="row p-4">
+                <div class="col-md-2 p-5" style="width:273px; height:614px;">
+                    <div id="categories">
+                        @await Component.InvokeAsync("Category")
+                    </div>
+                </div>
+                <div class="col p-5">
+                    @RenderBody()
                 </div>
             </div>
-            <div class="col p-5">
-                @RenderBody()
-            </div>
         </div>
+    </div>
+    <div class="p-5">
+        @RenderSection("Descriptionlayout", required: false)
+    </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <p class="text-white">
+                        <small>
+                            © Все права защищены 2022. Политика конфиденциальности.
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </nav>
     </div>
 </body>
 </html>

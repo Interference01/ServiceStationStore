@@ -25,14 +25,14 @@ namespace ServiceStationStore.Controllers
                 ReturnUrl = returnUrl
             });
         }
-        public RedirectToActionResult AddToCart(int productId, string returnUrl)
+        public RedirectResult AddToCart(int productId,string  returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(x => x.ProductId == productId);
             if (product != null)
             {
                 cart.AddItem(product, 1);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return Redirect(returnUrl);
         }
         public RedirectToActionResult RemoveFromCart(int productId, string returnUrl)
         {
