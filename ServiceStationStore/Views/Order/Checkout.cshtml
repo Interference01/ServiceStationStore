@@ -1,0 +1,31 @@
+﻿@model Order
+
+    <h2>Оплатить сейчас</h2>
+    <p>Пожалуйста укажите свои личные данные, и мы отправим ваш товар прямо сейчас!</p>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form asp-action="Checkout" method="post">
+        <h3>Доставка</h3>
+        <div class="form-group p-2">
+            <label>Имя:</label><input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group p-2">
+            <label>Город:</label><input asp-for="City" class="form-control" />
+        </div>
+        <div class="form-group p-2">
+            <label>Регион:</label><input asp-for="Region" class="form-control" />
+        </div>
+        <div class="form-group p-2">
+            <label>Адрес:</label><input asp-for="Address" class="form-control" />
+        </div>
+        <div class="form-group p-2">
+            <label>Номер телефона:</label><input asp-for="NumberPhone" class="form-control" />
+        </div>
+        <div class="form-group p-2">
+            <input asp-for="Pickup" class="form-check-input" type="checkbox" id="flexCheckDefault" checked />
+            <label class="form-check-label" for="flexCheckDefault">Самовывоз</label>
+        </div>
+        <div class="text-center p-2">
+            <input class="btn btn-primary" type="submit" value="Отправить" />
+        </div>
+    </form>
