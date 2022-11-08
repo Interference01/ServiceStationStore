@@ -1,0 +1,17 @@
+﻿@model Cart
+
+<form asp-action="Index" asp-controller="Cart" method="post">
+    <input type="hidden">
+    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+    <button type="submit" class="btn btn-outline-primary position-relative">
+        <img src="~/605508_bag_buy_cart_item_sale_icon.png" style="width:55px; height: 55px;" />
+        Корзина
+        @if (Model.Lines.Count() > 0)
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                @Model.Lines.Sum(x => x.QuantityCart)
+                <span class="visually-hidden"></span>
+            </span>
+        }
+    </button>
+</form>

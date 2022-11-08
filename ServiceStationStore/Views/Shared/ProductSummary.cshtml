@@ -1,0 +1,63 @@
+﻿@model Product
+
+
+<div class="p-3">
+    <div class="rounded-3 border p-1">
+        <div class="bg-light rounded-3">
+            <div class="d-flex">
+                <div class="d-flex flex-column">
+                    <div class="d-flex justify-content-center mx-5 mt-4">
+                        @if (@Model.Picture != null)
+                        {
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(Model.Picture));
+                            <img src="@imgSrc" class="img-thumbnail" style="width: 207px; height: 157px;" />
+                        }
+                        else
+                        {
+                            <img src="~/no_foto.jpeg" class="img-thumbnail" style="width: 207px; height: 157px;" />
+                        }
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>
+                            <small>
+                                <img src="~/return.png" style="width:10%" />
+                                14 дней на обмен и возврат
+                                <br />
+                                <img src="~/8703718_yes_check_ok_accept_checklist_icon.png" style="width:10%" />
+                                Гарантия на запчасти 1 год
+                            </small>
+                        </p>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="mb-4">
+                        <h5>
+                            @Model.Name
+                        </h5>
+                    </div>
+                    <div>
+                        Бренд: @Model.Brand.Name
+                        <br />
+                        Код товара: @Model.ProductId
+                    </div>
+                </div>
+                <div class="ms-auto p-5">
+                    <div>
+                        <div class="d-flex justify-content-center">
+                            <p>Цена @Model.Price$</p>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-primary" asp-action="AddToCart" asp-controller="Cart" asp-route-productId="@Model.ProductId" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+                                <img src="~/cart small.png" style="width: 22px; height: 22px;" />
+                                Купить
+                            </a>
+                        </div>
+                        <div class="d-flex justify-content-center p-2">
+                            <p>На складе @Model.Quantity шт.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model ProductListViewModel
+
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p);
+}
+<nav>
+    <div class="mt-5">
+        <ul class="pagination d-flex justify-content-center">
+            <li class="page-item"><a asp-route-productpage=1 class="page-link">Начало</a></li>
+            @if ((Model.PagingInfo.CurrentPage - 1) >= 1)
+            {
+                <li class="page-item">
+                    <a asp-route-productpage="@(Model.PagingInfo.CurrentPage-1)" class="page-link">@(Model.PagingInfo.CurrentPage-1)</a>
+                </li>
+            }
+            <li class="page-item active">
+                <a asp-route-productpage="@Model.PagingInfo.CurrentPage" class="page-link">@Model.PagingInfo.CurrentPage</a>
+            </li>
+            @if (Model.PagingInfo.TotalPages > Model.PagingInfo.CurrentPage)
+            {
+                <li class="page-item">
+                    <a asp-route-productpage="@(Model.PagingInfo.CurrentPage+1)" class="page-link">@(Model.PagingInfo.CurrentPage+1)</a>
+                </li>
+            }
+            @if (Model.PagingInfo.TotalPages > (Model.PagingInfo.CurrentPage + 1))
+            {
+                <li class="page-item">
+                    <a asp-route-productpage="@(Model.PagingInfo.CurrentPage+2)" class="page-link">@(Model.PagingInfo.CurrentPage+2)</a>
+                </li>
+            }
+            <li class="page-item"><a asp-route-productpage="@Model.PagingInfo.TotalPages" class="page-link"><img src="~/arrow right.png" style="width: 20px; height: 20px;" /></a></li>
+        </ul>
+    </div>
+</nav>
+<div>
+</div>

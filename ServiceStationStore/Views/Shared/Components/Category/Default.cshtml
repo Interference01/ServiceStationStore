@@ -1,0 +1,10 @@
+﻿@model IEnumerable<string>
+
+<div class="d-flex flex-column" >
+    @foreach (string category in Model)
+    {
+        <a class="btn btn-outline-primary @(category == ViewBag.SelectedCategory ? "active" : "") m-2 p-2" asp-action="Index" asp-controller="Product" asp-route-productPage="1" asp-route-category=@category>
+            @category
+        </a>
+    }
+</div>
